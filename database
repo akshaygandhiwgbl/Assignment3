@@ -1,0 +1,228 @@
+
+----------------------------------------------
+
+railway
+  id
+  name
+  rail_no
+  rail_type_id
+
+-----------------------------------------------
+
+rail_type
+  id
+  type_name
+
+-----------------------------------------------
+
+railway_station
+  id
+  name
+  railway_id
+  railway_type_id
+  ticket_id
+  timming_id
+  food_vendord_id
+  coolies_id
+  fine_id
+  railway_quarter_id
+
+----------------------------------------------
+
+food_Vendors
+  id
+  Name
+  cost
+  no_of products
+
+----------------------------------------------
+
+rail_source_destination
+  id
+  source
+  destination
+
+---------------------------------------------
+
+
+---------------------------------------------
+
+coolies
+  id
+  token no
+  platform no
+
+---------------------------------------------
+
+fine
+  id
+  reciept no
+  price
+  tc_id
+  no_of people
+  raliway_id
+
+--------------------------------------------
+
+tracs
+  id
+  number
+  Distance
+
+--------------------------------------------
+
+ticket checker
+  id
+  no
+  name
+
+--------------------------------------------
+
+train_route
+  ralway_station_id
+  no_of_stops
+
+--------------------------------------------
+
+employe_details
+  id
+  first name
+  last name
+  profile_id
+  quarters_id
+  railway_station_id
+
+--------------------------------------------
+
+employe_profile
+  id
+  date_of_birth
+  address_id
+  Salary
+  Designation
+  mobile_no
+  age
+  marital_status
+  education
+  documents
+  gender
+
+------------------------------------------
+
+address
+  id
+  city
+  town
+  villag
+  country
+  state
+
+------------------------------------------
+
+railway_quarters
+  id
+  name
+  address_id
+
+------------------------------------------
+
+platform
+  id
+  number
+  avialable(bollean)
+
+------------------------------------------
+
+train_seats
+  id
+  seats_no
+  seats_available(boolean)
+  coach_type_id
+
+------------------------------------------
+
+coach_type
+  id
+  type
+
+------------------------------------------
+
+
+------------------------------------------
+get time table of train
+------------------------------------------
+timetable
+  id
+  rail_id
+  timming_id
+  rail_Source_destination_id
+
+---------------------------------------------
+get details of coolies,food vendors,railways
+---------------------------------------------
+other_details
+  id
+  coolie_id
+  food_vendor_id
+  railway_id
+
+---------------------------------------------
+get details available for seat
+---------------------------------------------
+seat_details
+  id
+  train_seats_id
+  railway_id
+  railway_type
+
+---------------------------------------------
+get track details
+---------------------------------------------
+trac_details
+  id
+  track_id
+  railway_id
+
+---------------------------------------------
+get railway station details
+---------------------------------------------
+railway_info
+  id
+  railway_station_id
+  employe_id
+  platform_id
+
+
+---------------------------------------------
+get time in and out of train
+---------------------------------------------
+train_in_out
+  id
+  time_id
+  railway_id
+
+----------------------------------------------
+information required for tickets
+----------------------------------------------
+
+ticket
+  id
+  no
+  railway_id
+  rail_type_id
+  cost
+  no_of_people
+  rail_no
+  rail_source_destination_id
+  distance
+  type_of_seats
+  validity
+  date
+
+----------------------------------------------
+money revenue
+----------------------------------------------
+revinue
+  id
+  ticket_id
+  railway_station_id
