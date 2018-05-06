@@ -2,227 +2,283 @@
 ----------------------------------------------
 
 railway
-  id
-  name
-  rail_no
-  rail_type_id
+  id                              int(primary key)
+  name                            varchar2
+  Train_no                        number
+  source_destination_id           int(foregin_key)source_destination
+-----------------------------------------------
+source_destination
+  id                  int(primary key)
+  source              varchar2
+  destination         varchar2
 
 -----------------------------------------------
 
-rail_type
-  id
-  type_name
+Train_type
+  id                  int(primary_key)
+  name                varchar2
 
 -----------------------------------------------
 
 railway_station
-  id
-  name
-  railway_id
-  railway_type_id
-  ticket_id
-  timming_id
-  food_vendord_id
-  coolies_id
-  fine_id
-  railway_quarter_id
+  id                  int(primary_key)
+  name                varchar2
 
+----------------------------------------------
+
+coach_type
+  id                  int(primary_id)
+  type                varchar2
 ----------------------------------------------
 
 food_Vendors
-  id
-  Name
-  cost
-  no_of products
+  id                  int(primary_key)
+  Name                varchar2
 
 ----------------------------------------------
 
-rail_source_destination
-  id
-  source
-  destination
+product
+  id                  int(primary_key)
+  name                varchar2
+  price               int
+  type                varchar2
+  veg_or_nonveg       (boolean)
+
 
 ---------------------------------------------
 
+food_vendor_details
+  id                  int(primary_key)
+  food_vendor_id      int(foregin_key)food_vendor
+  product_id          int(foregin_key)product
 
 ---------------------------------------------
 
 coolies
-  id
-  token no
-  platform no
+  id                  int(primary_key)
+  token_no            varchar2
+  name                varchar2
+  address_id          int
+  documents           varchar2
 
----------------------------------------------
+  ------------------------------------------
 
-fine
-  id
-  reciept no
-  price
-  tc_id
-  no_of people
-  raliway_id
+train_seats
+  id                  int(primary_key)
+  seats_no            int
+  available           boolean
 
 --------------------------------------------
-
 tracs
-  id
-  number
-  Distance
-
---------------------------------------------
-
-ticket checker
-  id
-  no
-  name
-
---------------------------------------------
-
-train_route
-  ralway_station_id
-  no_of_stops
-
---------------------------------------------
-
-employe_details
-  id
-  first name
-  last name
-  profile_id
-  quarters_id
-  railway_station_id
-
---------------------------------------------
-
-employe_profile
-  id
-  date_of_birth
-  address_id
-  Salary
-  Designation
-  mobile_no
-  age
-  marital_status
-  education
-  documents
-  gender
-
-------------------------------------------
-
-address
-  id
-  city
-  town
-  villag
-  country
-  state
-
-------------------------------------------
-
-railway_quarters
-  id
-  name
-  address_id
+  id                  int(primary_key)
+  number              int
+  Distance            int
 
 ------------------------------------------
 
 platform
-  id
-  number
-  avialable(bollean)
+  id                  int(primary_key)
+  number              int
+  avialable           boolean
+
+--------------------------------------------
+
+fine
+  id                  int(primary_key)
+  reciept no          int
+  price               double
+  no_of_people        int
 
 ------------------------------------------
 
-train_seats
-  id
-  seats_no
-  seats_available(boolean)
-  coach_type_id
+address
+  id                  int(primary_key)
+  city_id             int(foregin_key)city
+  town_id             int(foregin_key)town
+  villag_id           int(foregin_key)village
+  country_id          int(foregin_key)country
+  state_id            int(foregin_key)state
+  addresable_id       int(railway_station_id,employee_id)
+  addresable_type     varchar2
+
+--------------------------------------------
+city
+  id                  int(primary_key)
+  name                varchar2
+--------------------------------------------
+town
+  id                  int(primary_key)
+  name                varchar2
+--------------------------------------------
+village
+  id                  int(primary_key)
+  name                varchar2
+--------------------------------------------
+state
+  id                  int(primary_key)
+  name                varchar2
+--------------------------------------------
+country
+  id                  int(primary_key)
+  name                varchar2
+--------------------------------------------
+employe_details
+  id                  int(primary_key)
+  first_name          varchar2
+  last_name           varchar2
+--------------------------------------------
+
+employe_profile
+  id                  int(primary_key)
+  date_of_birth       date
+  Salary              int
+  designation         varchar2
+  mobile_no           number
+  age                 number
+  marital_status      varchar
+  education           varchar2
+  documents           varchar2
+  gender              varchar
 
 ------------------------------------------
 
-coach_type
-  id
-  type
-
-------------------------------------------
-
-
-------------------------------------------
-get time table of train
-------------------------------------------
-timetable
-  id
-  rail_id
-  timming_id
-  rail_Source_destination_id
-
----------------------------------------------
-get details of coolies,food vendors,railways
----------------------------------------------
-other_details
-  id
-  coolie_id
-  food_vendor_id
-  railway_id
-
----------------------------------------------
-get details available for seat
----------------------------------------------
-seat_details
-  id
-  train_seats_id
-  railway_id
-  railway_type
+railway_quarters
+  id                  int(primary_key)
+  name                varchar2
 
 ---------------------------------------------
 get track details
 ---------------------------------------------
+
 trac_details
-  id
-  track_id
-  railway_id
+  id                  int(primary_key)
+  track_id            int(foregin_key)track
+  railway_id          int(foregin_key)railway
 
----------------------------------------------
-get railway station details
----------------------------------------------
-railway_info
-  id
-  railway_station_id
-  employe_id
-  platform_id
-
-
----------------------------------------------
-get time in and out of train
----------------------------------------------
-train_in_out
-  id
-  time_id
-  railway_id
+-----------------------------------------------
+ticket_cost
+  id                  int(primary_key)
+  cost                double
 
 ----------------------------------------------
 information required for tickets
 ----------------------------------------------
 
 ticket
-  id
-  no
-  railway_id
-  rail_type_id
-  cost
-  no_of_people
-  rail_no
-  rail_source_destination_id
-  distance
-  type_of_seats
-  validity
-  date
+  id                  int(primary_key)
+  no                  int
+  ticket_cost_id      int(foregin_key)ticket_cost
+  railway_id          int(foregin_key)railway_id
+  train_type_id       int(foregin_key)train_type_id
+  no_of_people        int
+  validity            int
+  date                date
+  day                 varchar2
+  time                time
+
+---------------------------------------------
+get time for railway at particular station
+---------------------------------------------
+
+railway_details
+  id                  int(primary_key)
+  railway_id          int(foregin_key)railway
+  railway_station_id  int(foregin_key)railway_station
+  train_type          int(foregin_key)train
+  coach_type_id       int(foregin_key)coach_type
+  arrivel_time        time
+  departure_time      time
+  platform_id         int(foregin_key)platform
+  train_seats_id      int(foregin_key)train_seats
+  date                date
+
+
+---------------------------------------------
+get platform info
+---------------------------------------------
+
+platform_info
+  id                   int(primary_key)
+  platform_id          int(foregin_key)platform
+  railway_station_id   int(foregin_key)railway_station
+  railway_id           int(foregin_key)railway
+
+---------------------------------------------
+get details of coolies
+---------------------------------------------
+
+coolies_info
+  id                       int(primary_key)
+  coolie_id                int(foregin_key)coolie_id
+  railway_station_id       int(foregin_key)railway_station
+  address_id               int(foregin_key)address
+  platform_id              int(foregin_key)platform
 
 ----------------------------------------------
 money revenue
 ----------------------------------------------
+
 revinue
-  id
-  ticket_id
-  railway_station_id
+  id                  int(primary_key)
+  ticket_cost_id      int(foregin_key)ticket_cost
+  railway_station_id  int(foregin_key)railway_station
+  railway_id          int(foregin_key)railway
+
+----------------------------------------------
+Train_available_days
+----------------------------------------------
+
+train_available_days
+  id                       int(primary_key)
+  available_days           boolean
+  railway_details_id       int(foregin_key)railway_details
+
+--------------------------------------------
+get details of food_vendors
+---------------------------------------------
+
+food_vendor_info
+  id                       int(primary_key)
+  food_vendor_id           int(foregin_key)food_vendor
+  railway_station_id       int(foregin_key)railway_station
+  address_id               int(foregin_key)address
+  platform_id              int(foregin_key)platform
+--------------------------------------------------
+
+
+----------------------------------------------
+NAME OF TABLES
+----------------------------------------------
+
+railway
+rail_type
+railway_station
+coach_types
+food_vendor
+food_vendor_details
+product
+coolies
+train_seats
+track
+platform
+fines
+address
+city
+state
+village
+town
+country
+employee_details
+employe_profile
+railway_quatrers
+ticket
+ticket_cost
+railway_details
+platform_info
+railwar_info
+monthly_revniue
+train_available_days
+coolies_info
+food_vendor_info
+
+
